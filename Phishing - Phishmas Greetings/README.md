@@ -1,4 +1,4 @@
-# TryHackMe — Spotting Phishing (AoC 2025)
+# TryHackMe - Spotting Phishing (AoC 2025)
 
 **Room:** [Spotting Phishing](https://tryhackme.com/room/spottingphishing-aoc2025-r2g4f6s8l0)  
 **Category:** Phishing Analysis / Email Security  
@@ -27,9 +27,9 @@ Analyse six emails and classify each one as either **Spam** or **Phishing**. For
 
 ## 📧 Email Analysis
 
----
+### Email 1 - Invoice from Santa Claus (4103)
 
-### Email 1
+![Email 1](Screenshots/Invoice-from-Santa-Claus-(4103).png)
 
 **Classification:** Phishing
 
@@ -45,7 +45,9 @@ Analyse six emails and classify each one as either **Spam** or **Phishing**. For
 
 ---
 
-### Email 2
+### Email 2 - New Audio Message from McSkidy
+
+![Email 2](Screenshots/New-Audio-Message-from-McSkidy.png)
 
 **Classification:** Phishing
 
@@ -61,7 +63,9 @@ Analyse six emails and classify each one as either **Spam** or **Phishing**. For
 
 ---
 
-### Email 3
+### Email 3 - URGENT  McSkidy VPN access for incident response
+
+![Email 3](Screenshots/URGENT-McSkidy-VPN-access-for-incident-response.png)
 
 **Classification:** Phishing
 
@@ -77,7 +81,9 @@ Analyse six emails and classify each one as either **Spam** or **Phishing**. For
 
 ---
 
-### Email 4
+### Email 4 - TBFC HR Department shared Annual Salary Raise Approval.pdf with you
+
+![Email 4](Screenshots/TBFC-HR-Department-shared-Annual-Salary-Raise-Approval.pdf-with-you.png)
 
 **Classification:** Phishing
 
@@ -93,7 +99,9 @@ Analyse six emails and classify each one as either **Spam** or **Phishing**. For
 
 ---
 
-### Email 5
+### Email 5 - Improve your event logistics this SOC mas season
+
+![Email 5](Screenshots/Improve-your-event-logistics-this-SOC-mas-season.png)
 
 **Classification:** ✉️ Spam (Not Phishing)
 
@@ -104,7 +112,9 @@ This email did not exhibit phishing characteristics. It was unsolicited bulk/pro
 
 ---
 
-### Email 6
+### Email 6 - TBFC IT shared Christmas Laptop Upgrade Agreement with you
+
+![Email 6](Screenshots/TBFC-IT-shared-Christmas-Laptop-Upgrade-Agreement-with-you.png)
 
 **Classification:** Phishing
 
@@ -128,7 +138,7 @@ This email did not exhibit phishing characteristics. It was unsolicited bulk/pro
 | 2 | Phishing | Impersonation, Spoofing, Malicious Attachment | `THM{nmumber2-was-not-tha-thard!}` |
 | 3 | Phishing | Impersonation, Social Engineering Text, Sense of Urgency | `THM{Impersonation-is-areal-thing-keepIt}` |
 | 4 | Phishing | Impersonation, External Sender Domain, Social Engineering Text | `THM{Get-back-SOC-mas!!}` |
-| 5 | Spam | — | `THM{It-was-just-a-sp4m!!}` |
+| 5 | Spam | - | `THM{It-was-just-a-sp4m!!}` |
 | 6 | Phishing | Impersonation, Typosquatting/Punycodes, Social Engineering Text | `THM{number6-is-the-last-one!-DX!}` |
 
 ---
@@ -136,17 +146,17 @@ This email did not exhibit phishing characteristics. It was unsolicited bulk/pro
 ## 🧠 Key Takeaways
 
 ### Phishing vs Spam
-- **Spam** = unsolicited bulk email, usually commercial — annoying but not inherently malicious.
+- **Spam** = unsolicited bulk email, usually commercial - annoying but not inherently malicious.
 - **Phishing** = deceptive email with malicious intent (steal credentials, deliver malware, etc.).
 
 ### Most Common Signals Observed
-- **Impersonation** appeared in 4 out of 5 phishing emails — attackers almost always pretend to be someone you trust.
-- **Social Engineering Text** was present in 3 emails — urgency and fear are classic manipulation tools.
+- **Impersonation** appeared in 4 out of 5 phishing emails - attackers almost always pretend to be someone you trust.
+- **Social Engineering Text** was present in 3 emails - urgency and fear are classic manipulation tools.
 - **Spoofing** was used to make the sender address look legitimate at a glance.
 
 ### Analyst Tips
-1. Always check the **sender domain** — a real bank won't email from `@gmail.com`.
-2. Hover over links **before** clicking — fake login pages often use domains that look close but aren't exact.
+1. Always check the **sender domain** - a real bank won't email from `@gmail.com`.
+2. Hover over links **before** clicking - fake login pages often use domains that look close but aren't exact.
 3. Attachments from unexpected senders = automatic red flag, even if the email looks legitimate.
-4. **Urgency is a weapon** — if an email is pressuring you to act *right now*, slow down and verify.
-5. Typosquatting is subtle — `paypa1.com` vs `paypal.com` can be easy to miss at a glance.
+4. **Urgency is a weapon** - if an email is pressuring you to act *right now*, slow down and verify.
+5. Typosquatting is subtle - `paypa1.com` vs `paypal.com` can be easy to miss at a glance.
