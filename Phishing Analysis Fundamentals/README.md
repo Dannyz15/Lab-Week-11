@@ -1,25 +1,9 @@
-# TryHackMe — Phishing Emails 1 Write-Up
+# TryHackMe - Phishing Emails 1 Write-Up
 
 > **Room:** [Phishing Emails 1](https://tryhackme.com/room/phishingemails1tryoe)  
-> **Module:** Phishing Analysis — SOC Level 1 Path  
+> **Module:** Phishing Analysis - SOC Level 1 Path  
 > **Difficulty:** Easy  
 > **Status:** Completed ✅  
-> **Author:** [Dannyz15](https://github.com/Dannyz15)
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Task 1 — Introduction](#task-1--introduction)
-- [Task 2 — The Email Address](#task-2--the-email-address)
-- [Task 3 — Email Delivery](#task-3--email-delivery)
-- [Task 4 — Email Headers](#task-4--email-headers)
-- [Task 5 — Email Body](#task-5--email-body)
-- [Task 6 — Types of Phishing](#task-6--types-of-phishing)
-- [Task 7 — Conclusion](#task-7--conclusion)
-- [Key Takeaways](#key-takeaways)
-- [Further Learning](#further-learning)
 
 ---
 
@@ -27,7 +11,7 @@
 
 Spam and phishing remain the most common **social engineering** threats facing modern organizations. While spam is often low-risk, phishing can trick users into disclosing sensitive information or unknowingly deploying malware.
 
-In this room, I explored the anatomy of a phishing email — from how email addresses are structured, how messages travel across networks, to how defenders analyze raw headers and bodies to identify attacker intent.
+In this room, I explored the anatomy of a phishing email from how email addresses are structured, how messages travel across networks, to how defenders analyze raw headers and bodies to identify attacker intent.
 
 ### Learning Objectives
 
@@ -39,7 +23,7 @@ In this room, I explored the anatomy of a phishing email — from how email addr
 
 ---
 
-## Task 1 — Introduction
+## Task 1 - Introduction
 
 The lab environment provides an `Email Samples` folder on the target machine's desktop. This task sets the stage for learning phishing analysis from a defender's perspective.
 
@@ -49,7 +33,7 @@ The lab environment provides an `Email Samples` folder on the target machine's d
 
 ---
 
-## Task 2 — The Email Address
+## Task 2 - The Email Address
 
 ### Anatomy of an Email Address
 
@@ -77,7 +61,7 @@ username @ domain name
 
 ---
 
-## Task 3 — Email Delivery
+## Task 3 - Email Delivery
 
 ### Core Email Protocols
 
@@ -117,11 +101,11 @@ username @ domain name
 
 ---
 
-## Task 4 — Email Headers
+## Task 4 - Email Headers
 
 ### What Are Email Headers?
 
-Email headers contain **metadata** about the message — information about the sender, the servers involved in delivery, and timestamps. This is crucial when investigating suspicious emails.
+Email headers contain **metadata** about the message, information about the sender, the servers involved in delivery, and timestamps. This is crucial when investigating suspicious emails.
 
 ### Key Header Fields
 
@@ -154,7 +138,7 @@ This reveals all header fields, including the originating IP address and any aut
 
 ---
 
-## Task 5 — Email Body
+## Task 5 - Email Body
 
 ### HTML vs Plain Text Emails
 
@@ -168,12 +152,12 @@ Email attachments are embedded directly in the raw message. Important headers to
 |--------|-------------------|
 | `Content-Type` | The MIME type of the file (e.g., `application/pdf`) |
 | `Content-Disposition` | Confirms it's an attachment and reveals the **filename** |
-| `Content-Transfer-Encoding` | Encoding method — typically `base64` |
+| `Content-Transfer-Encoding` | Encoding method - typically `base64` |
 
 ### Decoding Base64 Attachments
 
 The attachment content is stored as a **Base64-encoded** string. To reconstruct the file:
-- Use **[CyberChef](https://gchq.github.io/CyberChef/)** — From Base64 → Save as file
+- Use **[CyberChef](https://gchq.github.io/CyberChef/)** - From Base64 → Save as file
 - Use an online **Base64 to PDF converter**
 
 ### Questions & Answers (email2.txt)
@@ -186,7 +170,7 @@ The attachment content is stored as a **Base64-encoded** string. To reconstruct 
 
 ---
 
-## Task 6 — Types of Phishing
+## Task 6 - Types of Phishing
 
 ### Types of Phishing Attacks
 
@@ -212,7 +196,7 @@ Common red flags to look for:
 | 🔴 **Hidden / Shortened Links** | Hover text shows a legitimate domain but the actual URL is malicious |
 | 🔴 **Malicious Attachments** | Files disguised as invoices, PDFs, or other legitimate documents |
 
-### Safe Analysis — Defanging URLs & IPs
+### Safe Analysis - Defanging URLs & IPs
 
 When analyzing malicious URLs or IPs, **defang** them to prevent accidental clicks or connections:
 
@@ -223,11 +207,11 @@ When analyzing malicious URLs or IPs, **defang** them to prevent accidental clic
 | **Original URL** | `http://malicious.com` |
 | **Defanged URL** | `hxxp[://]malicious[.]com` |
 
-> Defanging replaces `.` with `[.]` and `http` with `hxxp` — making the value unclickable while still readable for analysis.
+> Defanging replaces `.` with `[.]` and `http` with `hxxp` - making the value unclickable while still readable for analysis.
 
-### Investigation — Phishing Email Analysis
+### Investigation - Phishing Email Analysis
 
-The email analyzed in this task impersonates **Home Depot**, a well-known home improvement retail chain — a classic brand impersonation attack.
+The email analyzed in this task impersonates **Home Depot**, a well-known home improvement retail chain - a classic brand impersonation attack.
 
 ```
 Spoofed Brand:     Home Depot
@@ -236,7 +220,7 @@ X-Originating-IP:  103[.]234[.]236[.]83 (defanged)
 Auth-Results From: atlas102.free.mail.gq1.yahoo.com
 ```
 
-> ⚠️ **Key Observation:** The `Authentication-Results` header was generated by a Yahoo mail server (`gq1.yahoo.com`), which is completely unrelated to Home Depot — a clear sign of a spoofed/malicious email.
+> ⚠️ **Key Observation:** The `Authentication-Results` header was generated by a Yahoo mail server (`gq1.yahoo.com`), which is completely unrelated to Home Depot - a clear sign of a spoofed/malicious email.
 
 ### Questions & Answers
 
@@ -249,7 +233,7 @@ Auth-Results From: atlas102.free.mail.gq1.yahoo.com
 
 ---
 
-## Task 7 — Conclusion
+## Task 7 - Conclusion
 
 ### Business Email Compromise (BEC)
 
@@ -259,7 +243,7 @@ Auth-Results From: atlas102.free.mail.gq1.yahoo.com
 2. Uses that compromised account to send emails from **within** the organization
 3. Tricks employees into performing **unauthorized or fraudulent actions** (e.g., wire transfers, credential submission)
 
-BEC is especially dangerous because the email originates from a real, trusted account — bypassing many spam and phishing filters.
+BEC is especially dangerous because the email originates from a real, trusted account - bypassing many spam and phishing filters.
 
 ### Questions & Answers
 
@@ -290,22 +274,3 @@ BEC is especially dangerous because the email originates from a real, trusted ac
 | **Thunderbird** | View raw email source (headers + body) via `Ctrl+U` |
 | **CyberChef** | Decode Base64-encoded attachments |
 | **Defanging** | Safely handle malicious URLs and IPs during analysis |
-
----
-
-## Further Learning
-
-This room is the first in the **Phishing Analysis** module of the **SOC Level 1 Path**.
-
-| Room | Link |
-|------|------|
-| Phishing Emails in Action | [TryHackMe](https://tryhackme.com/room/phishingemails2rytmuv) |
-| Phishing Analysis Tools | [TryHackMe](https://tryhackme.com/room/phishingemails3ncoivu4) |
-| Phishing Prevention | [TryHackMe](https://tryhackme.com/room/phishingemails4gkxh) |
-| The Greenholt Phish | [TryHackMe](https://tryhackme.com/room/phishingemails5fgjlzxc) |
-| Snapped Phish-ing Line | [TryHackMe](https://tryhackme.com/room/snappedphishingline) |
-
----
-
-*Write-up by [Dannyz15](https://github.com/Dannyz15)*  
-*TryHackMe: [tryhackme.com/p/Dannyz15](https://tryhackme.com/p/Dannyz15)*
